@@ -1,0 +1,81 @@
+.card-toggle {
+  width: var(--card_width);
+  height: var(--card_height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.card-image{
+  width: var(--image_width);
+  height: var(--image_height);
+}
+
+.card-arrow{
+  width: var(--image_width);
+  height: var(--image_height);
+}
+
+
+
+:root{
+    --card_width: 500px;
+    --card_height: 50px;
+    --image_width: 40px;
+    --image_height: 40px;
+  background-color:rgb(32, 41, 64) ;
+}
+
+.card{
+  width: var(--card_width);
+  background-color:rgb(202, 170, 152);
+  padding: 1rem;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+
+}
+
+
+
+.card-content{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.field-label{
+  font-weight: bold;
+  font-size: large;
+}
+
+.field-input{
+  
+  background-color: rgb(154, 134, 120);
+  border-radius: 8px;
+  width: 400px;
+  height: 30px;
+  font-size: large;
+}
+
+.submit-button {
+  background-color: rgb(75, 64, 56);
+  color: white;
+  border-radius: 20px;
+  width: 200px;
+  height: 50px;
+  font-size: x-large;
+
+  margin-top: 20px;
+}
+

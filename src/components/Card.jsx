@@ -2,8 +2,19 @@ import { useState } from "react"
 import arrowDown from '../assets/arrow_down.png'
 
 
-export default function Card({name, fields, open, onClick, image}){
-  
+export default function Card({name, fields, open, onClick, image, onSubmit}){
+   const emptyFields= Object.fromEntries(fields.map((field=>[field,""])));
+   const [inputValue,setInputValue]=useState(emptyFields);
+
+   function handleInputChange(e){
+    const updatedInput = {...inputValue,[e.target.id]:e.target.value};
+    setInputValue(updatedInput);
+   }
+
+   function handleSubmit(){
+    onSubmit(inputValue);
+   }
+
     return(
         <div className="card">
                         <button type='button' onClick={onClick} className="card-toggle">
@@ -26,11 +37,16 @@ export default function Card({name, fields, open, onClick, image}){
                         <div key={field}>
                             <label className="field-label" htmlFor={field}>{field}</label>
                             <br/>
-                            <input className="field-input" type="text" id={field}/>
+                            <input
+                            className="field-input"
+                            type="text"
+                            id={field}
+                            onChange={handleInputChange}
+                            />
                         </div>
                         
                     ))}
-                <button className="submit-button">submit</button>
+                <button type='button' className="submit-button" onClick={handleSubmit}>Submit</button>
                     
                 </div>
 

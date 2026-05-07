@@ -79,3 +79,17 @@
   margin-top: 20px;
 }
 
+
+.content-wrapper{
+  display: flex;
+  justify-content: space-around;
+}
+
+.CV-part {
+  width: 794px;
+  height: 1123px;
+  background-color: white;
+  border-color: rgb(75, 64, 56);
+  border-style: solid;
+  border-width: 10px;
+}

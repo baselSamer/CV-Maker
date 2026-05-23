@@ -4,21 +4,25 @@ import arrowDown from '../assets/arrow_down.png';
 export default function Card({ cardName, fields, sections, image, open, onClick, onSubmit, onSectionsChange }) {
     const [fieldValues, setFieldValues] = useState(
         Object.fromEntries(
-            sections ? 
-            sections.flatMap(section => 
-                section.fields.map(field => [field.name, ""])
-            ) :
-            (fields ? fields.map(field => [field.name, ""]) : [])
+            sections.map(section => [
+                section.id,
+                Object.fromEntries(
+                    section.fields.map(field => [field.name, ""])
+                )
+            ])
         )
     );
 
     const customSectionCount = sections ? sections.filter(section => section.fields.some(f => f.custom)).length + 1:1;
     // console.log(sections);
-    function handleInputChange(e) {
-        setFieldValues({
-            ...fieldValues,
-            [e.target.id]: e.target.value
-        });
+    function handleInputChange(e, sectionId) {
+        setFieldValues(prev => ({
+            ...prev,
+            [sectionId]: {
+                ...prev[sectionId],
+                [e.target.id]: e.target.value
+            }
+        }));
     }
 
     function handleSubmit(e) {
@@ -95,7 +99,7 @@ export default function Card({ cardName, fields, sections, image, open, onClick,
                             <br  />
                             {section.fields.map((field) => (
                                 <div key={field.name}>
-                                    {field.category === "title" && (
+                                    {field.category === "title" && (    
                                         <div className="title">
                                             <label className="field-label" htmlFor={field.name}>{field.name}</label>
                                             <br />
@@ -104,8 +108,8 @@ export default function Card({ cardName, fields, sections, image, open, onClick,
                                                     className="field-input"
                                                     type={field.type}
                                                     id={field.name}
-                                                    value={fieldValues[field.name] || ""}
-                                                    onChange={handleInputChange}
+                                                    value={fieldValues[section.id]?.[field.name] || ""}
+                                                    onChange={(e) => handleInputChange(e, section.id)}
                                                 />
                                                 <button
                                                     type="button"
@@ -127,8 +131,8 @@ export default function Card({ cardName, fields, sections, image, open, onClick,
                                                     className="field-input"
                                                     type={field.type}
                                                     id={field.name}
-                                                    value={fieldValues[field.name] || ""}
-                                                    onChange={handleInputChange}
+                                                    value={fieldValues[section.id]?.[field.name] || ""}
+                                                    onChange={(e) => handleInputChange(e, section.id)}
                                                 />
                                                 <button
                                                     type="button"
@@ -150,8 +154,8 @@ export default function Card({ cardName, fields, sections, image, open, onClick,
                                                     className="field-input-bb"
                                                     type={field.type}
                                                     id={field.name}
-                                                    value={fieldValues[field.name] || ""}
-                                                    onChange={handleInputChange}
+                                                    value={fieldValues[section.id]?.[field.name] || ""}
+                                                    onChange={(e) => handleInputChange(e, section.id)}
                                                 />
                                                 <button
                                                     type="button"

@@ -2,7 +2,7 @@
 import { useState } from "react"
 import "../styles/Resume.css"
 
-export default function Resume({cardValues}){
+export default function Resume({cardValues, cardSections}){
     const gPrefix = cardValues["General Information"];
 
     const contactInfoParts = [
@@ -15,7 +15,7 @@ export default function Resume({cardValues}){
       ),
       gPrefix["Linkedin (link)"] && (
         <a href={gPrefix["Linkedin (link)"]} target="_blank" rel="noopener noreferrer">
-          LinkedIn
+          LinkedIn  
         </a>
       ),
       gPrefix["Github (link)"] && (
@@ -39,7 +39,67 @@ export default function Resume({cardValues}){
                 </p>
             </div>
 
+        <div className="resume-body">
 
+                {Object.entries(cardSections).map(([cardName, sections]) => (
+
+                    <div key={cardName} className="resume-section">
+
+                        {cardName !== "General Information" && (
+                            <>
+
+                                <div className="CV-title">
+                                    {cardName.toUpperCase()}
+                                    <hr />
+                                </div>
+
+                                {sections && sections.map((section) => (
+
+                                    <div
+                                        key={section.id}
+                                        className="resume-subsection"
+                                    >
+
+                                        {section.fields.map((field) => {
+
+                                            const value =
+                                                cardValues[cardName]?.[section.id]?.[field.name];
+
+                                            if (!value) return null;
+
+                                            return (
+                                                <div key={field.name}>
+
+                                                    {field.category === "title" && (
+                                                        <h3>{value}</h3>
+                                                    )}
+
+                                                    {field.category === "sub title" && (
+                                                        <h4>{value}</h4>
+                                                    )}
+
+                                                    {field.category.includes("bullet point") && (
+                                                        <div className={cardName !=="Summary" && "single-bullet"}>
+                                                        {cardName ==="Summary" ?<p>{value}</p>:<li>{value}</li>}
+                                                        </div>
+                                                    )}
+
+                                                </div>
+                                            );
+                                        })}
+
+                                      
+
+                                    </div>
+                                ))}
+
+                            </>
+                        )}
+
+                    </div>
+                ))}
+
+            </div>
         </div>
     )
 }

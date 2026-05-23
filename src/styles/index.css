@@ -80,6 +80,7 @@
   font-size: large;
   text-align: left; 
   padding: 10px;
+   resize: none;
 }
 
 .submit-button,
@@ -108,11 +109,39 @@
 
 .CV-part {
   width: 794px;
-  height: 1123px;
+  min-height: 1123px;
+
   background-color: white;
-  border-color: rgb(75, 64, 56);
-  border-style: solid;
-  border-width: 10px;
+
+  padding: 30px 50px;
+
+  color: #111;
+
+  font-family: "Arial", sans-serif;
+  line-height: 1.4;
+
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.General-Part {
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+.name {
+  font-size: 32px;
+
+  letter-spacing: 1px;
+
+  margin:0;
+  margin-top: 15px;
+}
+
+#extra-info {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: -25px;
 }
 
 .remove
@@ -143,4 +172,72 @@ font-size: 20px;
   padding: 10px;
   display: flex;
   flex-direction: column;
+}
+
+.CV-title{
+  font-size: 18px;
+  font-weight: bold;
+  
+
+  letter-spacing: 1px;
+
+  margin-bottom: 0;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #222;
+
+  width: 100%;
+
+  margin: 0 0 10px 0;
+}
+
+
+.resume-subsection h3 {
+  font-size: 18px;
+  margin-bottom: 0px;
+  font-weight: 550;
+
+}
+
+.resume-subsection h4 {
+  font-size: 15px;
+
+  font-style: italic;
+  font-weight: normal;
+
+  margin-bottom: 0px;
+
+  color: #444;
+ 
+}
+
+.resume-subsection p {
+  margin: 0px;
+  font-size: 11.5pt;
+  
+}
+
+.resume-subsection {
+  margin-bottom: 8px;
+}
+
+.resume-subsection h3,
+.resume-subsection h4 {
+  margin-top: 0;
+}
+
+.resume-subsection ul {
+  margin: 4px 0;
+  padding-left: 18px;
+}
+
+.resume-subsection li {
+  margin: 2px 0;
+  font-size: 12pt;
+}
+
+.single-bullet{
+  margin-left: 20px;
 }

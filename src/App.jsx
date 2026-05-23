@@ -12,21 +12,7 @@ import summaryPic from './assets/summary_pic.png'
 
 function App() {
   const cards = [
-    {
-      name: "Summary",
-      component: "Card",
-      sections: [
-        {
-          id: "summary-default",
-          fields: [
-            {name: "Detailed Summary", category: "bullet point", type:"text", custom: false}
-          ]
-        }
-      ],
-      image: summaryPic
-    },
-
-    {
+      {
       name: "General Information",
       component: "GeneralInfoCard",
       fields: [
@@ -39,6 +25,20 @@ function App() {
         { name: "Linkedin (link)", type: "url", placeholder: "https://www.linkedin.com/in/example", custom: false }
       ],
       image: generalInfoPic
+    },
+
+    {
+      name: "Summary",
+      component: "Card",
+      sections: [
+        {
+          id: "summary-default",
+          fields: [
+            {name: "Detailed Summary", category: "bullet point", type:"text", custom: false}
+          ]
+        }
+      ],
+      image: summaryPic
     },
 
     {
@@ -55,6 +55,21 @@ function App() {
         }
       ],
       image: educationPic
+    },
+    {
+      name: "Projects",
+      component: "Card",
+      sections: [
+        {
+          id: 'projects-default',
+          fields: [
+            { name: "Project Name", category: "title", type: "text", custom: false },
+            { name: "Project subtitle", category: "sub title", type: "text", custom: false },
+            { name: "Project bullet point", category: "bullet point", type: "text", custom: false }
+          ]
+        }
+      ],
+      image:projectsPic
     }
   ];
 
@@ -84,6 +99,7 @@ function App() {
       cards.map(card => [card.name, card.sections || null])
     )
   );
+  console.log(cardSections);
 
   const handleToggle = idx => {
     setOpenCards(prev => prev.map((open, i) => i === idx ? !open : open));
@@ -138,7 +154,7 @@ function App() {
         })}
       </div>
 
-      <Resume cardValues={cardValues} />
+      <Resume cardValues={cardValues} cardSections={cardSections} />
     </div>
   );
 }

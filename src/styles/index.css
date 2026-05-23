@@ -116,11 +116,27 @@
   padding: 30px 50px;
 
   color: #111;
+  box-sizing: border-box;
 
   font-family: "Arial", sans-serif;
   line-height: 1.4;
 
   box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.CV-part a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.CV-part a:hover {
+  text-decoration: underline;
+}
+
+.bullet-item {
+  font-size: 12pt;
+  margin: 2px 0;
 }
 
 .General-Part {
@@ -175,7 +191,7 @@ font-size: 20px;
 }
 
 .CV-title{
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   
 
@@ -195,7 +211,7 @@ hr {
 
 
 .resume-subsection h3 {
-  font-size: 18px;
+  font-size: 15px;
   margin-bottom: 0px;
   font-weight: 550;
 
@@ -215,7 +231,7 @@ hr {
 
 .resume-subsection p {
   margin: 0px;
-  font-size: 11.5pt;
+  font-size: 11.8pt;
   
 }
 
@@ -238,6 +254,34 @@ hr {
   font-size: 12pt;
 }
 
-.single-bullet{
-  margin-left: 20px;
+#export{
+  background: linear-gradient(135deg, #4b4cfb, #6c63ff);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+
+  box-shadow: 0 6px 15px rgba(76, 76, 251, 0.25);
+  transition: all 0.2s ease-in-out;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#export:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(76, 76, 251, 0.35);
+}
+
+#export:active{
+  transform: translateY(0px);
+  box-shadow: 0 4px 10px rgba(76, 76, 251, 0.2);
+}
+
+#export:focus{
+  outline: 2px solid rgba(108, 99, 255, 0.6);
+  outline-offset: 3px;
 }

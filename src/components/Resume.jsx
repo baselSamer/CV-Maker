@@ -1,4 +1,3 @@
-
 import { useState } from "react"
 import "../styles/Resume.css"
 
@@ -25,81 +24,77 @@ export default function Resume({cardValues, cardSections}){
       )
     ].filter(Boolean);
 
-    return(
-        <div className="CV-part">
-            <div className="General-Part">
-                <h2 className="name">{gPrefix["Full Name"]}</h2>
-                <p id='extra-info'>
-                  {contactInfoParts.map((part, idx) => (
-                    <span key={idx}>
-                      {idx > 0 && " | "}
-                      {part}
-                    </span>
-                  ))}
-                </p>
-            </div>
+return (
+    <div className="CV-part" id="cv-export">
+      
+      <div className="General-Part">
+        <h2 className="name">{gPrefix["Full Name"]}</h2>
 
-        <div className="resume-body">
+        <p id="extra-info">
+          {contactInfoParts.map((part, idx) => (
+            <span key={idx}>
+              {idx > 0 && " | "}
+              {part}
+            </span>
+          ))}
+        </p>
+      </div>
 
-                {Object.entries(cardSections).map(([cardName, sections]) => (
+      <div className="resume-body">
 
-                    <div key={cardName} className="resume-section">
+        {Object.entries(cardSections).map(([cardName, sections]) => (
+          <div key={cardName} className="resume-section">
 
-                        {cardName !== "General Information" && (
-                            <>
+            {cardName !== "General Information" && (
+              <>
+                <div className="CV-title">
+                  {cardName.toUpperCase()}
+                  <hr />
+                </div>
 
-                                <div className="CV-title">
-                                    {cardName.toUpperCase()}
-                                    <hr />
-                                </div>
+                {sections?.map((section) => (
+                  <div key={section.id} className="resume-subsection">
 
-                                {sections && sections.map((section) => (
+                    {section.fields.map((field) => {
+                      const value =
+                        cardValues[cardName]?.[section.id]?.[field.name];
 
-                                    <div
-                                        key={section.id}
-                                        className="resume-subsection"
-                                    >
+                      if (!value) return null;
 
-                                        {section.fields.map((field) => {
+                      return (
+                        <div key={field.name}>
 
-                                            const value =
-                                                cardValues[cardName]?.[section.id]?.[field.name];
+                          {field.category === "title" && (
+                            <h3>{value}</h3>
+                          )}
 
-                                            if (!value) return null;
+                          {field.category === "sub title" && (
+                            <h4>{value}</h4>
+                          )}
 
-                                            return (
-                                                <div key={field.name}>
+                          {field.category.includes("bullet point") && (
+                            <div className={cardName !== "Summary" ? "single-bullet" : ""}>
+                              {cardName === "Summary" ? (
+                                <p>{value}</p>
+                              ) : (
+                                <div className="bullet-item">• &nbsp;{value}</div>
+                              )}
+                            </div>
+                          )}
 
-                                                    {field.category === "title" && (
-                                                        <h3>{value}</h3>
-                                                    )}
+                        </div>
+                      );
+                    })}
 
-                                                    {field.category === "sub title" && (
-                                                        <h4>{value}</h4>
-                                                    )}
-
-                                                    {field.category.includes("bullet point") && (
-                                                        <div className={cardName !=="Summary" && "single-bullet"}>
-                                                        {cardName ==="Summary" ?<p>{value}</p>:<li>{value}</li>}
-                                                        </div>
-                                                    )}
-
-                                                </div>
-                                            );
-                                        })}
-
-                                      
-
-                                    </div>
-                                ))}
-
-                            </>
-                        )}
-
-                    </div>
+                  </div>
                 ))}
+              </>
+            )}
 
-            </div>
-        </div>
-    )
+          </div>
+        ))}
+
+      </div>
+    </div>
+  );
 }

@@ -9,6 +9,7 @@ import generalInfoPic from './assets/general_info_pic.png'
 import educationPic from './assets/education_pic.png'
 import projectsPic from './assets/projects_pic.png'
 import summaryPic from './assets/summary_pic.png'
+import  {exportCV}  from './utils/exportCV'
 
 function App() {
   const cards = [
@@ -134,26 +135,28 @@ function App() {
 
   return (
     <div className='content-wrapper'>
-      <div>
-        {cards.map((card, idx) => {
-          const CardComponent = card.component === "GeneralInfoCard" ? GeneralInfoCard : Card;
+      <div  >
+        <button onClick={exportCV} id='export'>Export as PDF</button>
+        <div>
+          {cards.map((card, idx) => {
+            const CardComponent = card.component === "GeneralInfoCard" ? GeneralInfoCard : Card;
 
-          return (
-            <CardComponent
-              key={card.name}
-              cardName={card.name}
-              fields={card.fields}
-              sections={cardSections[card.name]}
-              image={card.image}
-              open={openCards[idx]}
-              onClick={() => handleToggle(idx)}
-              onSubmit={(values) => handleSubmit(card.name, values)}
-              onSectionsChange={(newSections) => handleSectionsChange(card.name, newSections)}
-            />
-          );
-        })}
+            return (
+              <CardComponent
+                key={card.name}
+                cardName={card.name}
+                fields={card.fields}
+                sections={cardSections[card.name]}
+                image={card.image}
+                open={openCards[idx]}
+                onClick={() => handleToggle(idx)}
+                onSubmit={(values) => handleSubmit(card.name, values)}
+                onSectionsChange={(newSections) => handleSectionsChange(card.name, newSections)}
+              />
+            );          
+          })}
+        </div>
       </div>
-
       <Resume cardValues={cardValues} cardSections={cardSections} />
     </div>
   );

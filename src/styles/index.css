@@ -59,7 +59,9 @@
   font-size: large;
 }
 
-.field-input{
+.field-input,
+.field-input-bb
+{
   
   background-color: rgb(154, 134, 120);
   border-radius: 8px;
@@ -68,7 +70,21 @@
   font-size: large;
 }
 
-.submit-button {
+.field-input-bb
+{
+  
+  background-color: rgb(154, 134, 120);
+  border-radius: 8px;
+  width: 400px;
+  height: 70px;
+  font-size: large;
+  text-align: left; 
+  padding: 10px;
+}
+
+.submit-button,
+.section-button
+{
   background-color: rgb(75, 64, 56);
   color: white;
   border-radius: 20px;
@@ -77,6 +93,11 @@
   font-size: x-large;
 
   margin-top: 20px;
+}
+
+.section-button{
+  margin-top: 0px;
+  height: 30px;
 }
 
 
@@ -92,4 +113,34 @@
   border-color: rgb(75, 64, 56);
   border-style: solid;
   border-width: 10px;
+}
+
+.remove
+{
+  background-color: red;
+  border-radius: 20px;
+  font-size: 15pt;
+  width: 30px;
+}
+
+.remove-section{
+background-color: red;
+border-radius: 20px;
+font-size: 20px;
+
+}
+
+.field-row{
+  display: flex;
+  gap: 20px;
+}
+
+.custom-border{
+  border-style: solid;
+  border-radius: 10px;
+  margin-top: 10px;
+  border-color: rgb(75, 64, 56);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
